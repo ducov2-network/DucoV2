@@ -33,8 +33,8 @@
 #include "string_tools.h"
 #include "daemon/command_server.h"
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "daemon"
+#undef DUCOV2_DEFAULT_LOG_CATEGORY
+#define DUCOV2_DEFAULT_LOG_CATEGORY "daemon"
 
 namespace daemonize {
 
@@ -364,7 +364,7 @@ bool t_command_server::help(const std::vector<std::string>& args)
 std::string t_command_server::get_commands_str()
 {
   std::stringstream ss;
-  ss << "ArQmA '" << ARQMA_RELEASE_NAME << "' (v" << ARQMA_VERSION_FULL << ")" << std::endl;
+  ss << "Ducov2 '" << DUCOV2_RELEASE_NAME << "' (v" << DUCOV2_VERSION_FULL << ")" << std::endl;
   ss << "Commands: " << std::endl;
   std::string usage = m_command_lookup.get_usage();
   boost::replace_all(usage, "\n", "\n  ");

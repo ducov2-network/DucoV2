@@ -57,8 +57,8 @@
 #include "common/varint.h"
 #include "common/pruning.h"
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "blockchain"
+#undef DUCOV2_DEFAULT_LOG_CATEGORY
+#define DUCOV2_DEFAULT_LOG_CATEGORY "blockchain"
 
 #define FIND_BLOCKCHAIN_SUPPLEMENT_MAX_SIZE (100*1024*1024) // 100 MB
 
@@ -90,16 +90,8 @@ static const struct {
  time_t time;
 } mainnet_hard_forks[] = {
  // version 1 from the start of the blockchain
- { 1, 0, 0, 1341378000 },
- { 7, 1, 0, 1528750800 },
- { 8, 100, 0, 1528751200 },
- { 9, 7000, 0, 1530320400 },
- { 10, 61250, 0, 1543615200 },
- { 11, 131650, 0, 1552424400 },
- { 12, 183700, 0, 1558656000 },
- { 13, 248200, 0, 1566511680 },
- { 14, 248920, 0, 1566598080 },
- { 15, 303666, 0, 1573257000 },
+ { 1, 0, 0, 1598306400 },
+ { 15, 1, 0, 1598306460 },
 };
 
 static const struct {
@@ -109,15 +101,8 @@ static const struct {
  time_t time;
 } testnet_hard_forks[] = {
  // version 1 from the start of the blockchain
- { 1, 0, 0, 1341378000 },
- { 7, 1, 0, 1528750800 },
- { 8, 10, 0, 1528751200 },
- { 9, 20, 0, 1530248400 },
- { 10, 100, 0, 1538352000 },
- { 11, 800, 0, 1552424400 },
- { 12, 1000, 0, 1552824400 },
- { 13, 2000, 0, 1566511680 },
- { 14, 3000, 0, 1566598080 },
+ { 1, 0, 0, 1598306400 },
+ { 15, 1, 0, 1598306460 },
 };
 
 static const struct {
@@ -127,16 +112,8 @@ static const struct {
  time_t time;
 } stagenet_hard_forks[] = {
  // version 1 from the start of the blockchain
- { 1, 0, 0, 1341378000 },
- { 7, 1, 0, 1528750800 },
- { 8, 100, 0, 1528751200 },
- { 9, 200, 0, 1530248400 },
- { 10, 500, 0, 1538352000 },
- { 11, 800, 0, 1552424400 },
- { 12, 1500, 0, 1554336000 },
- { 13, 2000, 0, 1560348000 },
- { 14, 2720, 0, 1560351600 },
- { 15, 12100, 0, 1570414500 },
+ { 1, 0, 0, 1598306400 },
+ { 15, 1, 0, 1598306460 },
 };
 //------------------------------------------------------------------
 Blockchain::Blockchain(tx_memory_pool& tx_pool) :
@@ -645,7 +622,7 @@ block Blockchain::pop_block_from_blockchain()
   block popped_block;
   std::vector<transaction> popped_txs;
 
-  CHECK_AND_ASSERT_THROW_MES(m_db->height() > 1, "It is forbidden to remove ArQmA Genesis Block.");
+  CHECK_AND_ASSERT_THROW_MES(m_db->height() > 1, "It is forbidden to remove Ducov2 Genesis Block.");
 
   try
   {
@@ -1298,7 +1275,7 @@ bool Blockchain::prevalidate_miner_transaction(const block& b, uint64_t height)
     return false;
   }
   MDEBUG("Miner tx hash: " << get_transaction_hash(b.miner_tx));
-  CHECK_AND_ASSERT_MES(b.miner_tx.unlock_time == height + config::blockchain_settings::ARQMA_BLOCK_UNLOCK_CONFIRMATIONS, false, "coinbase transaction transaction has the wrong unlock time=" << b.miner_tx.unlock_time << ", expected " << height + config::blockchain_settings::ARQMA_BLOCK_UNLOCK_CONFIRMATIONS);
+  CHECK_AND_ASSERT_MES(b.miner_tx.unlock_time == height + config::blockchain_settings::DUCOV2_BLOCK_UNLOCK_CONFIRMATIONS, false, "coinbase transaction transaction has the wrong unlock time=" << b.miner_tx.unlock_time << ", expected " << height + config::blockchain_settings::DUCOV2_BLOCK_UNLOCK_CONFIRMATIONS);
 
   //check outs overflow
   //NOTE: not entirely sure this is necessary, given that this function is
@@ -2051,7 +2028,7 @@ uint64_t Blockchain::get_num_mature_outputs(uint64_t amount) const
   {
     const tx_out_index toi = m_db->get_output_tx_and_index(amount, num_outs - 1);
     const uint64_t height = m_db->get_tx_block_height(toi.first);
-    if (height + config::tx_settings::ARQMA_TX_CONFIRMATIONS_REQUIRED <= blockchain_height)
+    if (height + config::tx_settings::DUCOV2_TX_CONFIRMATIONS_REQUIRED <= blockchain_height)
       break;
     --num_outs;
   }
@@ -3011,7 +2988,7 @@ bool Blockchain::check_tx_inputs(transaction &tx, tx_verification_context &tvc, 
     }
 
     // min/max tx version based on HF, and we accept v1 txes if having a non mixable
-    const size_t max_tx_version = config::tx_settings::ARQMA_TX_VERSION;
+    const size_t max_tx_version = config::tx_settings::DUCOV2_TX_VERSION;
     if (tx.version > max_tx_version)
     {
       MERROR_VER("transaction version " << (unsigned)tx.version << " is higher than max accepted version " << max_tx_version);
@@ -5104,7 +5081,7 @@ void Blockchain::cancel()
 }
 
 #if defined(PER_BLOCK_CHECKPOINT)
-static const char expected_block_hashes_hash[] = "5e301ca6aca3ae52a88037164b553d321391e10062b9aa6c9e1c7713f3ae9eee";
+static const char expected_block_hashes_hash[] = "";
 void Blockchain::load_compiled_in_block_hashes(const GetCheckpointsCallback& get_checkpoints)
 {
   if (get_checkpoints == nullptr || !m_fast_sync)

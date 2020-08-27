@@ -111,9 +111,9 @@ If you do detached, offline signing, you need to copy these uncommited changes t
 ```
 export NAME=malbit
 export VERSION=v0.10.0
-gpg --output $VERSION-linux/$NAME/arqma-linux-$VERSION-build.assert.sig --detach-sign $VERSION-linux/$NAME/arqma-linux-$VERSION-build.assert
-gpg --output $VERSION-osx-unsigned/$NAME/arqma-osx-$VERSION-build.assert.sig --detach-sign $VERSION-osx-unsigned/$NAME/arqma-osx-$VERSION-build.assert
-gpg --output $VERSION-win-unsigned/$NAME/arqma-win-$VERSION-build.assert.sig --detach-sign $VERSION-win-unsigned/$NAME/arqma-win-$VERSION-build.assert
+gpg --output $VERSION-linux/$NAME/ducov2-linux-$VERSION-build.assert.sig --detach-sign $VERSION-linux/$NAME/ducov2-linux-$VERSION-build.assert
+gpg --output $VERSION-osx-unsigned/$NAME/ducov2-osx-$VERSION-build.assert.sig --detach-sign $VERSION-osx-unsigned/$NAME/ducov2-osx-$VERSION-build.assert
+gpg --output $VERSION-win-unsigned/$NAME/ducov2-win-$VERSION-build.assert.sig --detach-sign $VERSION-win-unsigned/$NAME/ducov2-win-$VERSION-build.assert
 ```
 
 Make a pull request (both the `.assert` and `.assert.sig` files) to the
@@ -126,7 +126,7 @@ git push --set-upstream $NAME v0.10.0
 ```
 
 ```bash
-    gpg --detach-sign ${VERSION}-linux/${SIGNER}/arqma-linux-*-build.assert
-    gpg --detach-sign ${VERSION}-win-unsigned/${SIGNER}/arqma-win-*-build.assert
-    gpg --detach-sign ${VERSION}-osx-unsigned/${SIGNER}/arqma-osx-*-build.assert
+    gpg --detach-sign ${VERSION}-linux/${SIGNER}/ducov2-linux-*-build.assert
+    gpg --detach-sign ${VERSION}-win-unsigned/${SIGNER}/ducov2-win-*-build.assert
+    gpg --detach-sign ${VERSION}-osx-unsigned/${SIGNER}/ducov2-osx-*-build.assert
 ```

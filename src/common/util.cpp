@@ -88,8 +88,8 @@ using namespace epee;
 #include <boost/format.hpp>
 #include <openssl/sha.h>
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "util"
+#undef DUCOV2_DEFAULT_LOG_CATEGORY
+#define DUCOV2_DEFAULT_LOG_CATEGORY "util"
 
 namespace
 {

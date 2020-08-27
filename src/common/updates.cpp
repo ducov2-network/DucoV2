@@ -33,8 +33,8 @@
 #include "dns_utils.h"
 #include "updates.h"
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "updates"
+#undef DUCOV2_DEFAULT_LOG_CATEGORY
+#define DUCOV2_DEFAULT_LOG_CATEGORY "updates"
 
 namespace tools
 {
@@ -47,10 +47,7 @@ namespace tools
 
     // All four ArQ-Net domains have DNSSEC on and valid
     static const std::vector<std::string> dns_urls = {
-      "updates.arqma.com",
-      "updates.myarqma.com",
-      "updates.supportarqma.eu",
-      "updates.supportarqma.com"
+
     };
 
     if (!tools::dns_utils::load_txt_records_from_dns(records, dns_urls))

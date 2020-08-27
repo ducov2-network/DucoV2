@@ -19,8 +19,8 @@ network. The transaction will not be broadcast unless an anonymity connection
 is made or until `arqmad` is shutdown and restarted with only public
 connections enabled.
 
-Anonymity networks can also be used with `arqma-wallet-cli` and
-`arqma-wallet-rpc` - the wallets will connect to a daemon through a proxy. The
+Anonymity networks can also be used with `ducov2-wallet-cli` and
+`ducov2-wallet-rpc` - the wallets will connect to a daemon through a proxy. The
 daemon must provide a hidden service for the RPC itself, which is separate from
 the hidden service for P2P connections.
 
@@ -146,7 +146,7 @@ sees a transaction over Tor, it could _assume_ (possibly incorrectly) that the
 transaction originated from the peer. If both the Tor connection and an
 IPv4/IPv6 connection have timestamps that are approximately close in value they
 could be used to link the two connections. This is less likely to happen if the
-system clock is fairly accurate - many peers on the Arqma-Network should have
+system clock is fairly accurate - many peers on the ducov2-Network should have
 similar timestamps.
 
 #### Mitigation

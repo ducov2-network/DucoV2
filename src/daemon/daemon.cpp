@@ -53,8 +53,8 @@ using namespace epee;
 
 #include <functional>
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "daemon"
+#undef DUCOV2_DEFAULT_LOG_CATEGORY
+#define DUCOV2_DEFAULT_LOG_CATEGORY "daemon"
 
 namespace daemonize {
 
@@ -191,7 +191,7 @@ bool t_daemon::run(bool interactive)
 
       if(!arqmaNotifier.addTCPSocket(zmq_ip_str, zmq_port_str, zmq_max_clients))
       {
-        LOG_ERROR(std::string("Failed to add TCP Socket (") << zmq_ip_str + ":" << zmq_port_str + ") to Arqma ZMQ Server");
+        LOG_ERROR(std::string("Failed to add TCP Socket (") << zmq_ip_str + ":" << zmq_port_str + ") to Ducov2 ZMQ Server");
         return false;
       }
 
@@ -200,7 +200,7 @@ bool t_daemon::run(bool interactive)
       MGINFO_GREEN(std::string("Arqma ZMQ server started at ") << zmq_ip_str + ":" << zmq_port_str << " with Maximum Allowed Clients Connections: " << zmq_max_clients << ".");
     }
     else
-      MGINFO_GREEN(std::string("Arqma ZMQ Server Disabled"));
+      MGINFO_GREEN(std::string("Ducov2 ZMQ Server Disabled"));
 
     if (public_rpc_port > 0)
     {
@@ -215,7 +215,7 @@ bool t_daemon::run(bool interactive)
 
     if(zmq_enabled)
     {
-      MGINFO_GREEN(std::string("Stopping Arqma ZMQ Server."));
+      MGINFO_GREEN(std::string("Stopping Ducov2 ZMQ Server."));
       arqmaNotifier.stop();
     }
 

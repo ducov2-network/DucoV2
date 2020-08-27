@@ -51,10 +51,9 @@
 
 // MONEY_SUPPLY - total number coins to be generated
 #define MONEY_SUPPLY                                    ((uint64_t)50000000000000000)
-#define MONEY_PREMINE                                   ((uint64_t)7500000000000000)
+#define MONEY_PREMINE                                   ((uint64_t)3500000000000000)
 #define EMISSION_SPEED_FACTOR_PER_MINUTE                (22)
 #define FINAL_SUBSIDY_PER_MINUTE                        ((uint64_t)300000000)
-
 
 #define CRYPTONOTE_REWARD_BLOCKS_WINDOW                 100
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2    60000 //size of block (bytes) after which reward for block calculated using block size
@@ -64,7 +63,7 @@
 #define CRYPTONOTE_SHORT_TERM_BLOCK_WEIGHT_SURGE_FACTOR 50
 #define CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE          600
 #define CRYPTONOTE_DISPLAY_DECIMAL_POINT                9
-// COIN - number of smallest units in one coin
+
 #define COIN                                            ((uint64_t)1000000000)
 
 #define FEE_PER_KB_OLD                                  ((uint64_t)10000000)
@@ -78,9 +77,8 @@
 
 #define ORPHANED_BLOCKS_MAX_COUNT                       100
 
-
 #define DIFFICULTY_TARGET_V3                            DIFFICULTY_TARGET_V2
-#define DIFFICULTY_TARGET_V2                            240  // seconds
+#define DIFFICULTY_TARGET_V2                            240 // seconds
 #define DIFFICULTY_TARGET_V1                            120  // seconds - before first fork
 #define DIFFICULTY_WINDOW                               720 // blocks
 #define DIFFICULTY_WINDOW_V2                            30
@@ -88,17 +86,18 @@
 #define DIFFICULTY_LAG                                  15  // !!!
 #define DIFFICULTY_CUT                                  60  // timestamps to cut after sorting
 
-#define DIFFICULTY_TARGET_V10                           120
+#define DIFFICULTY_TARGET_V10                           120 // back
 #define DIFFICULTY_BLOCKS_COUNT_V10                     (DIFFICULTY_WINDOW_V10 + 1)
 #define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V10           11
 #define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V10          360
 #define DIFFICULTY_WINDOW_V10                           90
 
-#define DIFFICULTY_TARGET_V11                           120
+#define DIFFICULTY_TARGET_V11                           90
 #define DIFFICULTY_BLOCKS_COUNT_V11                     (DIFFICULTY_WINDOW_V11 + 1)
+#define DIFFICULTY_WINDOW_V11                           75
 #define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V11           11
-#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V11          360
-#define DIFFICULTY_WINDOW_V11                           90
+#define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V11          270
+
 
 #define DIFFICULTY_BLOCKS_COUNT_V3                      (DIFFICULTY_WINDOW_V3 + 1)
 #define DIFFICULTY_BLOCKS_COUNT_V2                      (DIFFICULTY_WINDOW_V2 + 1) // added to make N=N
@@ -121,7 +120,7 @@
 #define P2P_LOCAL_WHITE_PEERLIST_LIMIT                  1000
 #define P2P_LOCAL_GRAY_PEERLIST_LIMIT                   5000
 
-#define P2P_DEFAULT_CONNECTIONS_COUNT		        32
+#define P2P_DEFAULT_CONNECTIONS_COUNT		                32
 #define P2P_DEFAULT_HANDSHAKE_INTERVAL                  60         // secondes
 #define P2P_DEFAULT_PACKET_MAX_SIZE                     50000000   // 50MB maximum packet size
 #define P2P_DEFAULT_PEERS_IN_HANDSHAKE                  250
@@ -145,7 +144,7 @@
 #define P2P_SUPPORT_FLAG_FLUFFY_BLOCKS                  0x01
 #define P2P_SUPPORT_FLAGS                               P2P_SUPPORT_FLAG_FLUFFY_BLOCKS
 
-#define CRYPTONOTE_NAME                                 "arqma"
+#define CRYPTONOTE_NAME                                 "ducov2"
 #define CRYPTONOTE_POOLDATA_FILENAME                    "poolstate.bin"
 #define CRYPTONOTE_BLOCKCHAINDATA_FILENAME              "data.mdb"
 #define CRYPTONOTE_BLOCKCHAINDATA_LOCK_FILENAME         "lock.mdb"
@@ -193,58 +192,58 @@ namespace config
    uint64_t const DEFAULT_DUST_THRESHOLD = ((uint64_t)20000); // Deprecated
    uint64_t const BASE_REWARD_CLAMP_THRESHOLD = ((uint64_t)100000);
 
-   uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x2cca; // Wallet prefix: ar... // decimal prefix: 11466
-   uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x116bc7; // Wallet prefix: aRi... // decimal prefix: 1141703
-   uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x6847; // Wallet prefix: aRS... // decimal prefix: 26695
-   uint16_t const P2P_DEFAULT_PORT = 19993;
-   uint16_t const RPC_DEFAULT_PORT = 19994;
-   uint16_t const ZMQ_DEFAULT_PORT = 19995;
+   uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3fd35c; // Wallet prefix: emo MainNet
+   uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x93dc; // Wallet prefix: emi MainNet
+   uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x113dc; // Wallet prefix: ems MainNet
+   uint16_t const P2P_DEFAULT_PORT = 13371;
+   uint16_t const RPC_DEFAULT_PORT = 13372;
+   uint16_t const ZMQ_DEFAULT_PORT = 13373;
    boost::uuids::uuid const NETWORK_ID = { {
-       0x11, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x11, 0x1A
-     } }; // Bender's nightmare
-   std::string const GENESIS_TX = "011201ff00011e026bc5c7db8a664f652d78adb587ac4d759c6757258b64ef9cba3c0354e64fb2e42101abca6a39c561d0897be183eb0143990eba201aa7d2c652ab0555d28bb4b70728";
-   uint32_t const GENESIS_NONCE = 19993;
+       0x16, 0x11, 0x11, 0x1c, 0xFF, 0xFF, 0xFF, 0x11, 0x44, 0xf1, 0xFa, 0xFF, 0xFF, 0x55, 0xe1, 0x1B
+     } }; //
+   std::string const GENESIS_TX = "021201ff0007b1370294ff72f96fc602d714df1bd90ae3078769067023ecebc15c726260c52f94d8e880f10402de43847629202be86175b1dc9d84755bec509b574554bfa97b37a1f23408baa3a0c21e025745e0e5d1e08fb87765574c5db4a32c869bf32c2d98ab3e2c4f6be6535e6cc5c09fab0302567cebf47d79272018234c4c53993f834a2f4c7848df557a66591f4f786e630f80ade20402a053a0f2bc717348c5d43fd6d1566228b5585fbb145c65c53d499dcf64ced29880c2d72f026eb1a17e631b7768e4247737188f56094a9b6d047441c1ddbdc4a6e809c839ec8094ebdc0302512e8c6224dd66fc33f9d70606bfd6343dd6a09e3a95dc57320b6585330519472101693b698e398cd718b8409abdd6d78706119feb1455944ef0abcb97e5cd319ec600";
+   uint32_t const GENESIS_NONCE = 13371;
 
    namespace testnet
    {
-     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x53ca; // Wallet prefix: at... // decimal prefix: 21450
-     uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x504a; // Wallet prefix: ati... // decimal prefix: 20554
-     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x524a; // Wallet prefix: ats... // decimal prefix: 21066
-     uint16_t const P2P_DEFAULT_PORT = 29993;
-     uint16_t const RPC_DEFAULT_PORT = 29994;
-     uint16_t const ZMQ_DEFAULT_PORT = 29995;
+     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x495c; // Wallet prefix: dto
+     uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x14c7dc; // Wallet prefix: dti
+     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x1b09dc; // Wallet prefix: dts
+     uint16_t const P2P_DEFAULT_PORT = 23371;
+     uint16_t const RPC_DEFAULT_PORT = 23372;
+     uint16_t const ZMQ_DEFAULT_PORT = 23373;
      boost::uuids::uuid const NETWORK_ID = { {
-         0x11, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x11, 0x1B
-       } }; // Bender's daydream
+         0x11, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x11, 0x66, 0xFF, 0xFF, 0xFF, 0x66, 0x11, 0x1B
+       } }; // TEST
    }
 
    namespace stagenet
    {
-     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x39ca; // Wallet prefix: as... // decimal prefix: 14794
-     uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x1742ca; // Wallet prefix: asi... // decimal prefix: 1524426
-     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x1d84ca; // Wallet prefix: ass... // decimal prefix: 1934538
-     uint16_t const P2P_DEFAULT_PORT = 39993;
-     uint16_t const RPC_DEFAULT_PORT = 39994;
-     uint16_t const ZMQ_DEFAULT_PORT = 39995;
+     uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x5bda; // Wallet prefix: dao
+     uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x159a5a; // Wallet prefix: dai
+     uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x1b9c5a; // Wallet prefix: das
+     uint16_t const P2P_DEFAULT_PORT = 33371;
+     uint16_t const RPC_DEFAULT_PORT = 33372;
+     uint16_t const ZMQ_DEFAULT_PORT = 33373;
      boost::uuids::uuid const NETWORK_ID = { {
-         0x11, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x11, 0x1C
-       } }; // Bender's daydream
+         0x11, 0x11, 0x11, 0x11, 0xFF, 0xFF, 0xFF, 0x11, 0x11, 0x77, 0xFF, 0xFF, 0xFF, 0x77, 0x11, 0x1C
+       } }; // STAGE
    }
 
    namespace blockchain_settings
    {
-     const uint64_t PREMINE_BURN = 5100000000000000; // Will need to be set after knowing exact amount.
+     const uint64_t PREMINE_BURN = 0; // Will need to be set after knowing exact amount.
      const uint64_t MAXIMUM_BLOCK_SIZE_LIMIT = 2 * 1024 * 1024; // It is set to 2048kB (2MB)
      const uint64_t MINIMUM_BLOCK_SIZE_LIMIT = 1 * 1024 * 1024; // It is set to 1024kB (1MB)
-     const uint8_t ARQMA_GENESIS_BLOCK_MAJOR_VERSION = 1;
-     const uint8_t ARQMA_GENESIS_BLOCK_MINOR_VERSION = 1;
-     const uint8_t ARQMA_BLOCK_UNLOCK_CONFIRMATIONS = 18; // How many blocks mined are needed to unlock block_reward.
+     const uint8_t DUCOV2_GENESIS_BLOCK_MAJOR_VERSION = 1;
+     const uint8_t DUCOV2_GENESIS_BLOCK_MINOR_VERSION = 1;
+     const uint8_t DUCOV2_BLOCK_UNLOCK_CONFIRMATIONS = 18; // How many blocks mined are needed to unlock block_reward.
    }
 
    namespace tx_settings
    {
-     const size_t ARQMA_TX_CONFIRMATIONS_REQUIRED = 4; // How many blocks are needed to confirm transaction sent.
-     const size_t ARQMA_TX_VERSION = 2; // Current Transaction Version Valid on Arq-Net
+     const size_t DUCOV2_TX_CONFIRMATIONS_REQUIRED = 4; // How many blocks are needed to confirm transaction sent.
+     const size_t DUCOV2_TX_VERSION = 2; // Current Transaction Version Valid on Arq-Net
      const uint64_t TRANSACTION_SIZE_LIMIT = 48 * 1024; // I did set it to 48kB for now but it need to be verified.
      const uint64_t MAX_TRANSACTIONS_IN_BLOCK = 1024; // Maximum allowed transactions in One Block
    }

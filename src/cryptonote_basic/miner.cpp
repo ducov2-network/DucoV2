@@ -72,8 +72,8 @@
   #include <unistd.h>
 #endif
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "miner"
+#undef DUCOV2_DEFAULT_LOG_CATEGORY
+#define DUCOV2_DEFAULT_LOG_CATEGORY "miner"
 
 using namespace epee;
 

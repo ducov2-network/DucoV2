@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2019, The ArQmA Network
+// Copyright (c) 2018-2019, The Ducov2 Network
 // Copyright (c) 2014-2018, The Monero Project
 //
 // All rights reserved.
@@ -40,8 +40,8 @@
 #include <boost/optional.hpp>
 using namespace epee;
 
-#undef ARQMA_DEFAULT_LOG_CATEGORY
-#define ARQMA_DEFAULT_LOG_CATEGORY "net.dns"
+#undef DUCOV2_DEFAULT_LOG_CATEGORY
+#define DUCOV2_DEFAULT_LOG_CATEGORY "net.dns"
 
 static const char *DEFAULT_DNS_PUBLIC_ADDR[] =
 {
@@ -592,7 +592,7 @@ bool load_txt_records_from_dns(std::vector<std::string> &good_records, const std
   }
 
   good_records = records[good_records_index];
-  return true;
+  return false;
 }
 
 std::vector<std::string> parse_dns_public(const char *s)

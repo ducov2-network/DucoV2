@@ -45,7 +45,7 @@ def setup():
 def build():
     global args, workdir
 
-    os.makedirs('arqma-binaries/' + args.version, exist_ok=True)
+    os.makedirs('ducov2-binaries/' + args.version, exist_ok=True)
     print('\nBuilding Dependencies\n')
     os.chdir('gitian-builder')
     os.makedirs('inputs', exist_ok=True)
@@ -60,19 +60,19 @@ def build():
         print('\nCompiling ' + args.version + ' Linux')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'arqma='+args.commit, '--url', 'arqma='+args.url, '../arqma/contrib/gitian/gitian-linux.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-linux', '--destination', '../gitian.sigs/', '../arqma/contrib/gitian/gitian-linux.yml'])
-        subprocess.check_call('mv build/out/arqma-*.tar.gz ../arqma-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ducov2-*.tar.gz ../ducov2-binaries/'+args.version, shell=True)
 
     if args.windows:
         print('\nCompiling ' + args.version + ' Windows')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'arqma='+args.commit, '--url', 'arqma='+args.url, '../arqma/contrib/gitian/gitian-win.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win', '--destination', '../gitian.sigs/', '../arqma/contrib/gitian/gitian-win.yml'])
-        subprocess.check_call('mv build/out/arqma*.zip ../arqma-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/arqma*.zip ../ducov2-binaries/'+args.version, shell=True)
 
     if args.macos:
         print('\nCompiling ' + args.version + ' MacOS')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'arqma='+args.commit, '--url', 'arqma'+args.url, '../arqma/contrib/gitian/gitian-osx.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx', '--destination', '../gitian.sigs/', '../arqma/contrib/gitian/gitian-osx.yml'])
-        subprocess.check_call('mv build/out/arqma*.tar.gz ../arqma-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/arqma*.tar.gz ../ducov2-binaries/'+args.version, shell=True)
 
     os.chdir(workdir)
 
