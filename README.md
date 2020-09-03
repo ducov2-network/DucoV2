@@ -19,7 +19,7 @@ Network properties:
 - Ticker: DUC2
 - Max supply: 75 ml
 - Pre: 3.5 ml
-- Block time: 30 seconds
+- Block time: 90 seconds
 - Decimals: 9
 - Algorithm: RandomARQ
 - Consensus: PoW
